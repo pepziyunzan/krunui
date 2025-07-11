@@ -4,25 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เว็บไซต์ผลงานครู [ชื่อครู]</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #FFF9E6; /* Light yellow background */
+            font-weight: 300; /* Lighter font weight for modern look */
+            letter-spacing: 0.02em; /* Slight letter spacing for readability */
+        }
+        .header {
+            background: linear-gradient(90deg, #FFC107 0%, #FFD700 100%); /* Stronger yellow gradient */
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .site-title {
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+        }
+        .nav-menu.active {
+            display: flex;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1); /* Slight scale on hover */
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        .teacher-photo {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 4px solid #FFD700; /* Yellow border */
+        }
+        .teacher-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .teacher-name {
+            font-weight: 700;
+            background: linear-gradient(90deg, #FFD700, #FFC107); /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title {
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .link-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #FFF9E6; /* Light yellow card background */
+            border: 2px solid #FFD700; /* Yellow border */
+            font-weight: 400;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-color: #FFC107; /* Darker yellow on hover */
+        }
+        .card-button {
+            font-weight: 500;
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #FFD700; /* Yellow background for mobile menu */
+                padding: 1rem;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 20px;
+                cursor: pointer;
+            }
+            .hamburger span {
+                background: #1A1A1A; /* Black hamburger lines */
+                height: 3px;
+                width: 100%;
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="site-title">เว็บไซต์ผลงานครู [ชื่อครู]</h1>
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="site-title text-2xl md:text-4xl font-bold text-black">เว็บไซต์ผลงานครู [ชื่อครู]</h1>
                 <nav class="navigation">
-                    <ul class="nav-menu">
-                        <li><a href="index.html" class="nav-link active">หน้าหลัก</a></li>
-                        <li><a href="pa.html" class="nav-link">ผลการปฏิบัติงาน PA</a></li>
-                        <li><a href="certificates.html" class="nav-link">ประกาศนียบัตร</a></li>
-                        <li><a href="lesson_plans.html" class="nav-link">แผนการสอน</a></li>
-                        <li><a href="teaching_materials.html" class="nav-link">สื่อการสอน</a></li>
-                        <li><a href="contact.html" class="nav-link">ติดต่อ</a></li>
+                    <ul class="nav-menu flex space-x-4 md:space-x-6 text-black">
+                        <li><a href="index.html" class="nav-link hover:text-white transition active">หน้าหลัก</a></li>
+                        <li><a href="pa.html" class="nav-link hover:text-white transition">ผลการปฏิบัติงาน PA</a></li>
+                        <li><a href="certificates.html" class="nav-link hover:text-white transition">ประกาศนียบัตร</a></li>
+                        <li><a href="lesson_plans.html" class="nav-link hover:text-white transition">แผนการสอน</a></li>
+                        <li><a href="teaching_materials.html" class="nav-link hover:text-white transition">สื่อการสอน</a></li>
+                        <li><a href="contact.html" class="nav-link hover:text-white transition">ติดต่อ</a></li>
                     </ul>
-                    <div class="hamburger">
+                    <div class="hamburger md:hidden">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -33,129 +139,89 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-image">
-                    <img src="https://via.placeholder.com/300x300/4A90E2/FFFFFF?text=รูปภาพครู" alt="รูปภาพครู" class="teacher-photo">
+    <section class="hero py-12 bg-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="hero-image fade-in">
+                    <img src="https://via.placeholder.com/300x300/FFD700/1A1A1A?text=รูปภาพครู" alt="รูปภาพครู" class="teacher-photo rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg">
                 </div>
-                <div class="hero-text">
-                    <h2 class="teacher-name">[ชื่อ-นามสกุล ครู]</h2>
-                    <p class="teacher-position">ตำแหน่ง: [ตำแหน่ง] | โรงเรียน: [ชื่อโรงเรียน]</p>
-                    <p class="teacher-intro">
+                <div class="hero-text fade-in">
+                    <h2 class="teacher-name text-4xl md:text-5xl font-bold">[ชื่อ-นามสกุล ครู]</h2>
+                    <p class="teacher-position text-lg md:text-xl text-gray-600 mt-2 font-medium">ตำแหน่ง: [ตำแหน่ง] | โรงเรียน: [ชื่อโรงเรียน]</p>
+                    <p class="teacher-intro text-gray-700 mt-4 leading-relaxed text-base md:text-lg font-light">
                         ยินดีต้อนรับสู่เว็บไซต์ผลงานของฉัน ที่นี่รวบรวมผลงานทางวิชาการและวิชาชีพ 
                         ประสบการณ์การสอน และการพัฒนาตนเองอย่างต่อเนื่อง เพื่อการแลกเปลี่ยนเรียนรู้
                         และเป็นแรงบันดาลใจในการพัฒนาการศึกษาไทยให้ก้าวหน้าต่อไป
                     </p>
-                    <div class="teacher-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">[X]</span>
-                            <span class="stat-label">ปีประสบการณ์</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">[X]</span>
-                            <span class="stat-label">รายวิชาที่สอน</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">[X]</span>
-                            <span class="stat-label">ประกาศนียบัตร</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Objectives Section -->
-    <section class="objectives">
-        <div class="container">
-            <h2 class="section-title">วัตถุประสงค์ของเว็บไซต์</h2>
-            <div class="objectives-content">
-                <div class="objective-item">
-                    <div class="objective-icon">📚</div>
-                    <h3>รวบรวมผลงาน</h3>
-                    <p>เป็นแหล่งรวบรวมผลงานทางวิชาการและวิชาชีพอย่างเป็นระบบ เพื่อการประเมินผลและพัฒนาตนเอง</p>
-                </div>
-                <div class="objective-item">
-                    <div class="objective-icon">🤝</div>
-                    <h3>แลกเปลี่ยนเรียนรู้</h3>
-                    <p>เป็นแพลตฟอร์มสำหรับการแบ่งปันความรู้ ประสบการณ์ และแลกเปลี่ยนเรียนรู้กับเพื่อนร่วมวิชาชีพ</p>
-                </div>
-                <div class="objective-item">
-                    <div class="objective-icon">🎯</div>
-                    <h3>พัฒนาการศึกษา</h3>
-                    <p>สนับสนุนการพัฒนาคุณภาพการศึกษาและเป็นแรงบันดาลใจในการสร้างนวัตกรรมการเรียนรู้</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Quick Links Section -->
-    <section class="quick-links">
-        <div class="container">
-            <h2 class="section-title">ผลงานหลัก</h2>
-            <div class="links-grid">
-                <div class="link-card">
-                    <div class="card-icon">📊</div>
-                    <h3>ผลการปฏิบัติงาน PA</h3>
-                    <p>รายงานผลการปฏิบัติงานตามข้อตกลง Performance Agreement และเอกสารประกอบ</p>
-                    <a href="pa.html" class="card-button">ดูรายละเอียด</a>
+    <section class="quick-links py-12 bg-yellow-50">
+        <div class="container mx-auto px-4">
+            <div class="links-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="link-card p-6 rounded-lg shadow-md text-center">
+                    <div class="card-icon text-4xl md:text-5xl mb-4 text-yellow-600">📊</div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800">ผลการปฏิบัติงาน PA</h3>
+                    <p class="text-gray-600 mt-2 font-light text-base md:text-lg">รายงานผลการปฏิบัติงานตามข้อตกลง Performance Agreement และเอกสารประกอบ</p>
+                    <a href="pa.html" class="card-button inline-block mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition">ดูรายละเอียด</a>
                 </div>
-                <div class="link-card">
-                    <div class="card-icon">🏆</div>
-                    <h3>ประกาศนียบัตรและเกียรติบัตร</h3>
-                    <p>รวบรวมประกาศนียบัตรจากการอบรม สัมมนา และรางวัลที่ได้รับ</p>
-                    <a href="certificates.html" class="card-button">ดูรายละเอียด</a>
+                <div class="link-card p-6 rounded-lg shadow-md text-center">
+                    <div class="card-icon text-4xl md:text-5xl mb-4 text-yellow-600">🏆</div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800">ประกาศนียบัตรและเกียรติบัตร</h3>
+                    <p class="text-gray-600 mt-2 font-light text-base md:text-lg">รวบรวมประกาศนียบัตรจากการอบรม สัมมนา และรางวัลที่ได้รับ</p>
+                    <a href="certificates.html" class="card-button inline-block mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition">ดูรายละเอียด</a>
                 </div>
-                <div class="link-card">
-                    <div class="card-icon">📝</div>
-                    <h3>แผนการสอน</h3>
-                    <p>แผนการสอนในรายวิชาและระดับชั้นต่างๆ ที่ได้จัดทำและใช้ในการเรียนการสอน</p>
-                    <a href="lesson_plans.html" class="card-button">ดูรายละเอียด</a>
+                <div class="link-card p-6 rounded-lg shadow-md text-center">
+                    <div class="card-icon text-4xl md:text-5xl mb-4 text-yellow-600">📝</div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800">แผนการสอน</h3>
+                    <p class="text-gray-600 mt-2 font-light text-base md:text-lg">แผนการสอนในรายวิชาและระดับชั้นต่างๆ ที่ได้จัดทำและใช้ในการเรียนการสอน</p>
+                    <a href="lesson_plans.html" class="card-button inline-block mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition">ดูรายละเอียด</a>
                 </div>
-                <div class="link-card">
-                    <div class="card-icon">🎨</div>
-                    <h3>สื่อการสอน</h3>
-                    <p>สื่อการสอนที่พัฒนาขึ้นเพื่อใช้ในการจัดการเรียนรู้ให้มีประสิทธิภาพ</p>
-                    <a href="teaching_materials.html" class="card-button">ดูรายละเอียด</a>
+                <div class="link-card p-6 rounded-lg shadow-md text-center">
+                    <div class="card-icon text-4xl md:text-5xl mb-4 text-yellow-600">🎨</div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-gray-800">สื่อการสอน</h3>
+                    <p class="text-gray-600 mt-2 font-light text-base md:text-lg">สื่อการสอนที่พัฒนาขึ้นเพื่อใช้ในการจัดการเรียนรู้ให้มีประสิทธิภาพ</p>
+                    <a href="teaching_materials.html" class="card-button inline-block mt-4 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700 transition">ดูรายละเอียด</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Recent Updates Section -->
-    <section class="recent-updates">
-        <div class="container">
-            <h2 class="section-title">อัปเดตล่าสุด</h2>
-            <div class="updates-list">
-                <div class="update-item">
-                    <div class="update-date">
-                        <span class="date-day">[วัน]</span>
-                        <span class="date-month">[เดือน ปี]</span>
+    <section class="recent-updates py-12 bg-yellow-100">
+        <div class="container mx-auto px-4">
+            <div class="updates-list space-y-6">
+                <div class="update-item flex items-start gap-4 bg-white p-6 rounded-lg shadow-md fade-in border-l-4 border-yellow-600">
+                    <div class="update-date text-center">
+                        <span class="date-day text-2xl md:text-3xl font-bold text-yellow-600">[วัน]</span>
+                        <span class="date-month block text-gray-600 font-medium">[เดือน ปี]</span>
                     </div>
                     <div class="update-content">
-                        <h4>เพิ่มรายงาน PA ปีการศึกษา [ปี]</h4>
-                        <p>อัปเดตรายงานผลการปฏิบัติงานตามข้อตกลง PA ประจำปีการศึกษา [ปี] พร้อมเอกสารประกอบ</p>
+                        <h4 class="text-xl md:text-2xl font-semibold text-gray-800">เพิ่มรายงาน PA ปีการศึกษา [ปี]</h4>
+                        <p class="text-gray-600 mt-2 font-light text-base md:text-lg">อัปเดตรายงานผลการปฏิบัติงานตามข้อตกลง PA ประจำปีการศึกษา [ปี] พร้อมเอกสารประกอบ</p>
                     </div>
                 </div>
-                <div class="update-item">
-                    <div class="update-date">
-                        <span class="date-day">[วัน]</span>
-                        <span class="date-month">[เดือน ปี]</span>
+                <div class="update-item flex items-start gap-4 bg-white p-6 rounded-lg shadow-md fade-in border-l-4 border-yellow-600">
+                    <div class="update-date text-center">
+                        <span class="date-day text-2xl md:text-3xl font-bold text-yellow-600">[วัน]</span>
+                        <span class="date-month block text-gray-600 font-medium">[เดือน ปี]</span>
                     </div>
                     <div class="update-content">
-                        <h4>เพิ่มสื่อการสอนใหม่</h4>
-                        <p>อัปเดตสื่อการสอนรายวิชา [ชื่อรายวิชา] ระดับชั้น [ระดับชั้น] ที่ใช้เทคโนโลยีใหม่</p>
+                        <h4 class="text-xl md:text-2xl font-semibold text-gray-800">เพิ่มสื่อการสอนใหม่</h4>
+                        <p class="text-gray-600 mt-2 font-light text-base md:text-lg">อัปเดตสื่อการสอนรายวิชา [ชื่อรายวิชา] ระดับชั้น [ระดับชั้น] ที่ใช้เทคโนโลยีใหม่</p>
                     </div>
                 </div>
-                <div class="update-item">
-                    <div class="update-date">
-                        <span class="date-day">[วัน]</span>
-                        <span class="date-month">[เดือน ปี]</span>
+                <div class="update-item flex items-start gap-4 bg-white p-6 rounded-lg shadow-md fade-in border-l-4 border-yellow-600">
+                    <div class="update-date text-center">
+                        <span class="date-day text-2xl md:text-3xl font-bold text-yellow-600">[วัน]</span>
+                        <span class="date-month block text-gray-600 font-medium">[เดือน ปี]</span>
                     </div>
                     <div class="update-content">
-                        <h4>ได้รับประกาศนียบัตรใหม่</h4>
-                        <p>ได้รับประกาศนียบัตรจากการอบรม [ชื่อหลักสูตร] จาก [หน่วยงาน]</p>
+                        <h4 class="text-xl md:text-2xl font-semibold text-gray-800">ได้รับประกาศนียบัตรใหม่</h4>
+                        <p class="text-gray-600 mt-2 font-light text-base md:text-lg">ได้รับประกาศนียบัตรจากการอบรม [ชื่อหลักสูตร] จาก [หน่วยงาน]</p>
                     </div>
                 </div>
             </div>
@@ -163,30 +229,30 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+    <footer class="footer bg-yellow-600 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="footer-section">
-                    <h3>ติดต่อ</h3>
-                    <p>📧 อีเมล: [email@example.com]</p>
-                    <p>📱 โทรศัพท์: [xxx-xxx-xxxx]</p>
-                    <p>🏫 โรงเรียน: [ชื่อโรงเรียน]</p>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">ติดต่อ</h3>
+                    <p class="font-light text-base md:text-lg">📧 อีเมล: [email@example.com]</p>
+                    <p class="font-light text-base md:text-lg">📱 โทรศัพท์: [xxx-xxx-xxxx]</p>
+                    <p class="font-light text-base md:text-lg">🏫 โรงเรียน: [ชื่อโรงเรียน]</p>
                 </div>
                 <div class="footer-section">
-                    <h3>ติดตาม</h3>
-                    <div class="social-links">
-                        <a href="#" class="social-link">Facebook</a>
-                        <a href="#" class="social-link">Line</a>
-                        <a href="#" class="social-link">YouTube</a>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">ติดตาม</h3>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="social-link hover:text-black transition font-medium text-base md:text-lg">Facebook</a>
+                        <a href="#" class="social-link hover:text-black transition font-medium text-base md:text-lg">Line</a>
+                        <a href="#" class="social-link hover:text-black transition font-medium text-base md:text-lg">YouTube</a>
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h3>เกี่ยวกับเว็บไซต์</h3>
-                    <p>เว็บไซต์นี้จัดทำขึ้นเพื่อรวบรวมและแสดงผลงานทางวิชาการและวิชาชีพของครู</p>
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4">เกี่ยวกับเว็บไซต์</h3>
+                    <p class="font-light text-base md:text-lg">เว็บไซต์นี้จัดทำขึ้นเพื่อรวบรวมและแสดงผลงานทางวิชาการและวิชาชีพของครู</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 เว็บไซต์ผลงานครู [ชื่อครู]. สงวนลิขสิทธิ์.</p>
+            <div class="footer-bottom text-center mt-8">
+                <p class="font-light text-base md:text-lg">© 2024 เว็บไซต์ผลงานครู [ชื่อครู]. สงวนลิขสิทธิ์.</p>
             </div>
         </div>
     </footer>
@@ -206,7 +272,23 @@
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
         }));
+
+        // Fade-in animation on scroll
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${entry.target.dataset.delay || 0}s`;
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeInElements.forEach((el, index) => {
+            el.dataset.delay = index * 0.2;
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
-
